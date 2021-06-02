@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/messageProcess")
+@RequestMapping("/api/v1/message")
 @Slf4j
 public class ContinueController {
 
@@ -25,8 +25,8 @@ public class ContinueController {
             @ApiResponse(responseCode = "200", description = "Request received."),
             @ApiResponse(responseCode = "409", description = "Camunda error.")})
     @GetMapping()
-    public void messageProcess(@Parameter(description = "ID of the process to be progressed.", required = true) @RequestParam String processId, @Parameter(description = "The message to be sent.", required = true) @RequestParam String callbackMessage) {
-        log.info("[REST] Gonna continue Camunda process with id: {}, message {}", processId, callbackMessage);
-        continueService.continueProcess(processId, callbackMessage);
+    public void messageProcess(@Parameter(description = "ID of the process to be progressed.", required = true) @RequestParam String processId, @Parameter(description = "The message to be sent.", required = true) @RequestParam String message) {
+        log.info("[REST] Gonna continue Camunda process with id: {}, message {}", processId, message);
+        continueService.continueProcess(processId, message);
     }
 }

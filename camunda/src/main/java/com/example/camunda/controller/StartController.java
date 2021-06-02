@@ -26,9 +26,9 @@ public class StartController {
             @ApiResponse(responseCode = "200", description = "Request received."),
             @ApiResponse(responseCode = "400", description = "Bad request.")})
     @GetMapping()
-    public String start(@Parameter(description = "Value whether to skip the wait step", required = true) @RequestParam boolean skipWait) {
+    public String start(@Parameter(description = "Value whether to skip the wait step", required = true) @RequestParam boolean wait) {
         log.info("[REST] Starting new process with name: " + ProcessDefinitionName.TEST_PROCESS.processDefinition);
-        String id = startService.startProcess(skipWait);
+        String id = startService.startProcess(wait);
         log.info("[SERVICE] Process started id: {}", id);
         return id;
     }
