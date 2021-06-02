@@ -1,6 +1,6 @@
 package com.example.camunda.service;
 
-import com.example.camunda.catalogue.CallbackMessage;
+import com.example.camunda.catalogue.TestProcessVariable;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.MessageCorrelationResult;
@@ -14,14 +14,14 @@ public class ContinueService {
     @Autowired
     private RuntimeService runtimeService;
 
-    public String continueProcess(String processId, CallbackMessage callbackMessage) {
+    public void continueProcess(String processId, String message) {
         log.info("[SERVICE] Gonna continue Camunda process with id: {}", processId);
         MessageCorrelationResult result = runtimeService
-                .createMessageCorrelation(callbackMessage.message)
+                .createMessageCorrelation(TestProcessVariable.CALL_BACK_MESSAGE.variableName)
+                .setVariable(TestProcessVariable.CALL_BACK_MESSAGE.variableName, message)
                 .processInstanceId(processId)
                 .correlateWithResult();
         String resultType = result.getResultType().toString();
         log.info("[SERVICE] ResultType: {}", resultType);
-        return resultType;
     }
 }

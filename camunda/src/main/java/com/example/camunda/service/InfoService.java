@@ -29,7 +29,6 @@ public class InfoService {
                 .processDefinitionName(ProcessDefinitionName.TEST_PROCESS.processDefinition)
                 .latestVersion()
                 .singleResult();
-
         List<ProcessInstance> processInstances = runtimeService
                 .createProcessInstanceQuery()
                 .processDefinitionId(myProcessDefinition.getId())
@@ -38,6 +37,7 @@ public class InfoService {
         List<String> allActiveProcessIds = processInstances.stream()
                 .map(Execution::getId)
                 .collect(Collectors.toList());
+
         log.info("[SERVICE] All active process ids: {}", allActiveProcessIds);
         return allActiveProcessIds;
     }

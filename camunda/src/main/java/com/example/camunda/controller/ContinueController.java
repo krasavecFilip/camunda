@@ -1,6 +1,5 @@
 package com.example.camunda.controller;
 
-import com.example.camunda.catalogue.CallbackMessage;
 import com.example.camunda.service.ContinueService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -26,10 +25,8 @@ public class ContinueController {
             @ApiResponse(responseCode = "200", description = "Request received."),
             @ApiResponse(responseCode = "409", description = "Camunda error.")})
     @GetMapping()
-    public String messageProcess(@Parameter(description = "ID of the process to be progressed.", required = true) @RequestParam String processId, @Parameter(description = "The message to be sent.", required = true) @RequestParam CallbackMessage callbackMessage) {
+    public void messageProcess(@Parameter(description = "ID of the process to be progressed.", required = true) @RequestParam String processId, @Parameter(description = "The message to be sent.", required = true) @RequestParam String callbackMessage) {
         log.info("[REST] Gonna continue Camunda process with id: {}, message {}", processId, callbackMessage);
-        String result = continueService.continueProcess(processId, callbackMessage);
-        log.info("[REST] ResultType: {}", result);
-        return result;
+        continueService.continueProcess(processId, callbackMessage);
     }
 }

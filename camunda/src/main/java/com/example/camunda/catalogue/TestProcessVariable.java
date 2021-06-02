@@ -1,7 +1,8 @@
 package com.example.camunda.catalogue;
 
 public enum TestProcessVariable {
-    SKIP_WAIT("skipWait");
+    WAIT("wait"),
+    CALL_BACK_MESSAGE("callBackMessage");
 
     public final String variableName;
 

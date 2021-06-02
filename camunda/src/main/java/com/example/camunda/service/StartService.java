@@ -21,7 +21,7 @@ public class StartService {
     public String startProcess(boolean skipWait) {
         log.info("[SERVICE] Starting new process with name: {}", ProcessDefinitionName.TEST_PROCESS.processDefinition);
         Map<String, Object> params = new HashMap<>();
-        params.put(TestProcessVariable.SKIP_WAIT.variableName, skipWait);
+        params.put(TestProcessVariable.WAIT.variableName, skipWait);
 
         ProcessInstance pi = runtimeService.startProcessInstanceByKey(ProcessDefinitionName.TEST_PROCESS.processDefinition, params);
         String processInstanceId = pi.getProcessInstanceId();

@@ -11,6 +11,6 @@ public class HelloDelegate implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
-        log.info("[FirstTask] Camunda process started with id:{}. Waiting for message.", execution.getId());
+        log.info("[DELEGATE] Camunda process started with id:{}. Waiting for message.", execution.getId());
     }
 }
