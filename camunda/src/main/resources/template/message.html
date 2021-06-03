@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Start process: ${item:title}</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+    ${resource:css}
+    </style>
+</head>
+<body class="noselect">
+<div class="container bg-light">
+    <div class="col-md-12 text-center message-container">
+        <input type="processId" class="form-control" id="processId" value="${item:processId}">
+        <input type="message" class="form-control" id="message" placeholder="message">
+        <button id="submit" class="btn btn-lg btn-primary btn-block button" type="submit">Submit</button>
+    </div>
+</div>
+</div>
+<script>
+	${resource:js}
+</script>
+</body>
+</html>

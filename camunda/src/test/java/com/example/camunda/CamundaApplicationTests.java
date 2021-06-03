@@ -1,8 +1,8 @@
 package com.example.camunda;
 
 import com.example.camunda.catalogue.TestProcessVariable;
-import com.example.camunda.service.ContinueService;
 import com.example.camunda.service.InfoService;
+import com.example.camunda.service.MessageService;
 import com.example.camunda.service.StartService;
 import org.camunda.bpm.engine.HistoryService;
 import org.camunda.bpm.engine.history.HistoricProcessInstance;
@@ -31,10 +31,10 @@ class CamundaApplicationTests {
     private InfoService infoService;
 
     @Autowired
-    private ContinueService continueService;
+    private MessageService messageService;
 
     @Test
-    void happyPathSkipTrueTest() {
+    void happyPathWaitFalseTest() {
         String id = startService.startProcess(false);
 
         HistoricProcessInstance historicProcessInstance = retrieveProcessInstance(id);
@@ -43,7 +43,7 @@ class CamundaApplicationTests {
     }
 
     @Test
-    void happyPathSkipFalseTest() {
+    void happyPathWaitTrueTest() {
         String testMessage = "test message";
         String id = startService.startProcess(true);
 
@@ -55,7 +55,7 @@ class CamundaApplicationTests {
         assertThat(activeIds.size()).isEqualTo(1);
         assertThat(activeIds.get(0)).isEqualTo(id);
 
-        continueService.continueProcess(id, testMessage);
+        messageService.continueProcess(id, testMessage);
 
         HistoricProcessInstance historicProcessInstanceUpdated = retrieveProcessInstance(id);
         assertThat(historicProcessInstanceUpdated.getState()).isEqualTo(COMPLETED);

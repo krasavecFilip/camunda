@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class ContinueService {
+public class MessageService {
 
     @Autowired
     private RuntimeService runtimeService;
