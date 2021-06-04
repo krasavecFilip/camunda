@@ -20,7 +20,6 @@
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
         <camunda-bpm-spring-boot-starter.version>3.4.0</camunda-bpm-spring-boot-starter.version>
         <lombok.version>1.18.20</lombok.version>
-        <json.version>20180130</json.version>
     </properties>
 
     <dependencies>
@@ -71,11 +70,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${json.version}</version>
         </dependency>
     </dependencies>
 
